@@ -6,34 +6,61 @@ import fs from 'fs';
 import { registerComponent } from 'mjml-core';
 
 // Import and register custom component
-import TpFoo from './components/TpFoo';
 import TpTitle from './components/TpTitle';
-registerComponent(TpFoo);
+import TpText from './components/TpText';
 registerComponent(TpTitle);
+registerComponent(TpText);
 
 const template = Handlebars.compile(`
   <mjml>
     <mj-head>
         <mj-attributes>
             <mj-text padding="0" />
-            <mj-all font-family="Arial" color="#2f3033" />
+            <mj-all
+                font-family="Mark, Arial"
+                color="#676d73"
+                font-size="16px"
+                line-height="1.6"
+            />
         </mj-attributes>
+        <mj-style>
+            @font-face {
+                font-family: 'Mark';
+                font-weight: 400;
+                src: url(https://fonts.thumbtack.com/mark/mark-tt-subset.woff2) format('woff2'),
+                url(https://fonts.thumbtack.com/mark/mark-tt-subset.woff) format('woff');
+            }
+            @font-face {
+                font-family: 'Mark';
+                font-weight: 700;
+                src: url(https://fonts.thumbtack.com/mark/mark-tt-subset-bold.woff2) format('woff2'),
+                url(https://fonts.thumbtack.com/mark/mark-tt-subset-bold.woff) format('woff');
+            }
+        </mj-style>
     </mj-head>
     <mj-body>
         <mj-section>
-            <tp-title size="1" padding="2">
-                --- component ---
+            <tp-title size="2">
+                Hi {{name}}, your background check is complete.
             </tp-title>
+            <tp-text>
+                Congratulations! You passed your background check on June 6, 2017. A badge now appears on your profile which will help to increase your credibility with customers.
+            </tp-text>
+            <tp-text>
+                Thanks for your help in building trust on Thumbtack.
+            </tp-text>
         </mj-section>
     </mj-body>
   </mjml>
 `);
 
-const html = template({ people: ['Tom', 'Dan'] });
+const html = template({ name: 'Tom' });
 const htmlOutput = mjml2html(html);
 
-console.log(htmlOutput.errors);
-
-fs.writeFile('index.html', htmlOutput.html, err => {
-  if (err) throw err;
-});
+if (htmlOutput.errors[0] !== undefined) {
+  console.log(htmlOutput.errors[0]);
+} else {
+  fs.writeFile('index.html', htmlOutput.html, err => {
+    if (err) throw err;
+  });
+}

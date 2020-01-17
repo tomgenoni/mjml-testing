@@ -22,6 +22,7 @@ export default class TpFoo extends BodyComponent {
     return {
       root: {
         color: this.getAttribute('color'),
+        'font-size': '16px',
       },
     };
   }

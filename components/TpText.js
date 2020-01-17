@@ -3,16 +3,16 @@ import { BodyComponent } from 'mjml-core';
 import * as tokens from '@thumbtack/thumbprint-tokens';
 
 registerDependencies({
-  'tp-title': [],
-  'mj-body': ['tp-title'],
-  'mj-wrapper': ['tp-title'],
-  'mj-section': ['tp-title'],
+  'tp-text': [],
+  'mj-body': ['tp-text'],
+  'mj-wrapper': ['tp-text'],
+  'mj-section': ['tp-text'],
 });
 
 const fontSizeMap = {
-  1: tokens.tpFontTitle1Size,
-  2: tokens.tpFontTitle2Size,
-  3: tokens.tpFontTitle3Size,
+  1: tokens.tpFontBody1Size,
+  2: tokens.tpFontBody2Size,
+  3: tokens.tpFontBody3Size,
 };
 
 const spaceMap = {
@@ -21,7 +21,7 @@ const spaceMap = {
   3: tokens.tpSpace3,
 };
 
-export default class TpTitle extends BodyComponent {
+export default class TpText extends BodyComponent {
   static endingTag = true;
 
   static allowedAttributes = {
@@ -44,9 +44,6 @@ export default class TpTitle extends BodyComponent {
                 ${this.htmlAttributes({
                   'padding-bottom': spaceMap[this.getAttribute('space-bottom')],
                   'font-size': fontSizeMap[this.getAttribute('size')],
-                  'font-weight': 700,
-                  color: tokens.tpColorBlack,
-                  'line-height': '1.1',
                 })}
             >
                 ${this.getContent()}
