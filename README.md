@@ -1,6 +1,10 @@
 # mjml-testing
 
-A minimal example of mlml compiling with custom components built on mjml's core components and Handlebars for data. 
+A minimal example of mlml compiling with:
+
+1. Custom components built on mjml's core components
+2. Thumbprint tokens for colors, font sizes, etc.
+3. Handlebars for data
 
 ## Run locally
 
