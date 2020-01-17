@@ -1,5 +1,6 @@
 import mjml2html from 'mjml';
 import Handlebars from 'handlebars';
+import fs from 'fs';
 
 // Provides function to register custom components
 import { registerComponent } from 'mjml-core';
@@ -12,19 +13,17 @@ registerComponent(TpTitle);
 
 const template = Handlebars.compile(`
   <mjml>
+    <mj-head>
+        <mj-attributes>
+            <mj-text padding="0" />
+            <mj-all font-family="Arial" color="#2f3033" />
+        </mj-attributes>
+    </mj-head>
     <mj-body>
         <mj-section>
-            <mj-column>
-                <tp-title>
-                    --- component ---
-                </tp-title>
-                <mj-text padding="789px">
-                    --- mjml ---
-                </mj-text>
-                {{#each people}}
-                    <tp-foo>Hi {{this}}</tp-foo>
-                {{/each}}
-            </mj-column>
+            <tp-title size="1" padding="2">
+                --- component ---
+            </tp-title>
         </mj-section>
     </mj-body>
   </mjml>
@@ -33,7 +32,8 @@ const template = Handlebars.compile(`
 const html = template({ people: ['Tom', 'Dan'] });
 const htmlOutput = mjml2html(html);
 
-/*
-  Print the HTML generated and MJML errors if any
-*/
-console.log(htmlOutput);
+console.log(htmlOutput.errors);
+
+fs.writeFile('index.html', htmlOutput.html, err => {
+  if (err) throw err;
+});
