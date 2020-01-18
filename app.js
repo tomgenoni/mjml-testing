@@ -8,8 +8,10 @@ import { registerComponent } from 'mjml-core';
 // Import and register custom component
 import TpTitle from './components/TpTitle';
 import TpText from './components/TpText';
+import TpButton from './components/TpButton';
 registerComponent(TpTitle);
 registerComponent(TpText);
+registerComponent(TpButton);
 
 const template = Handlebars.compile(`
   <mjml>
@@ -49,6 +51,9 @@ const template = Handlebars.compile(`
             <tp-text>
                 Thanks for your help in building trust on Thumbtack.
             </tp-text>
+            <tp-button href="https://thumbtack.com/">
+                Primary
+            </tp-button>
         </mj-section>
     </mj-body>
   </mjml>
