@@ -6,18 +6,13 @@ import fs from 'fs';
 import { registerComponent } from 'mjml-core';
 
 // Import and register custom component
-import TpTitle from './components/TpTitle';
-import TpText from './components/TpText';
-import TpButton from './components/TpButton';
-registerComponent(TpTitle);
-registerComponent(TpText);
-registerComponent(TpButton);
+import TpBar from './components/TpBar';
+registerComponent(TpBar);
 
 const template = Handlebars.compile(`
   <mjml>
     <mj-head>
         <mj-attributes>
-            <mj-text padding="0" />
             <mj-all
                 font-family="Mark, Arial"
                 color="#676d73"
@@ -42,18 +37,9 @@ const template = Handlebars.compile(`
     </mj-head>
     <mj-body>
         <mj-section>
-            <tp-title size="2">
-                Hi {{name}}, your background check is complete.
-            </tp-title>
-            <tp-text>
-                Congratulations! You passed your background check on June 6, 2017. A badge now appears on your profile which will help to increase your credibility with customers.
-            </tp-text>
-            <tp-text>
-                Thanks for your help in building trust on Thumbtack.
-            </tp-text>
-            <tp-button href="https://thumbtack.com/">
-                Primary
-            </tp-button>
+            <mj-column>
+                <mj-text>text</mj-text>
+            </mj-column>
         </mj-section>
     </mj-body>
   </mjml>
