@@ -4,7 +4,7 @@ import * as tokens from '@thumbtack/thumbprint-tokens';
 
 registerDependencies({
   'tp-text': [],
-  'mj-body': ['tp-text'],
+  'mj-hero': ['tp-text'],
   'mj-column': ['tp-text'],
 });
 

@@ -70,16 +70,13 @@ const template = Handlebars.compile(`
                 <tp-text>Oh, to be a center fielder, a center fielder and nothing more.</tp-text>
                 <mj-button>mj Button</mj-button>
                 <tp-button>tp Button</tp-button>
-                {{#each people}}
-                    <tp-text>{{this}}</tp-text>
-                {{/each}}
             </mj-column>
         </mj-section>
     </mj-body>
   </mjml>
 `);
 
-const html = template({ people: ['Tom', 'Dan'] });
+const html = template({ name: 'Tom' });
 const htmlOutput = mjml2html(html);
 
 if (htmlOutput.errors[0] !== undefined) {
