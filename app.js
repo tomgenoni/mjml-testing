@@ -18,7 +18,27 @@ const template = Handlebars.compile(`
   <mjml>
     <mj-head>
         <mj-attributes>
-            <mj-divider padding="8px 16px" border-width="1px" border-color="lightgrey" />
+            <mj-divider padding="16px" border-width="1px" border-color="${tokens.tpColorGray300}" />
+            <mj-text
+                font-family="Mark"
+                padding="8px 16px"
+                font-size="16px"
+                color="${tokens.tpColorBlack300}"
+                line-height="1.6"
+                align="left"
+            />
+            <mj-button
+                padding="8px 16px"
+                background-color="${tokens.tpColorBlue}"
+                font-size="16px"
+                color="#ffffff"
+                align="left"
+            />
+            <mj-image padding="8px 16px" />
+            <mj-section padding="8px 16px" />
+            <mj-table padding="8px 24px" />
+            <mj-spacer height="24px" />
+            <mj-wrapper padding="24px 0" />
         </mj-attributes>
         <mj-style>
             @font-face {
@@ -34,8 +54,7 @@ const template = Handlebars.compile(`
                 url(https://fonts.thumbtack.com/mark/mark-tt-subset-bold.woff) format('woff');
             }
             body {
-                font-family: 'Mark';
-                font-weight: 400;
+                font-family: 'Mark, Arial';
                 font-size: 16px;
                 line-height: 1.6;
             }
@@ -44,25 +63,23 @@ const template = Handlebars.compile(`
     <mj-body>
         <mj-section>
             <mj-column>
-                <tp-title>This is a title.</tp-title>
+                <tp-title>Hi {{name}}.</tp-title>
                 <tp-text>She was so deeply imbedded in my consciousness that for the first year of school I seem to have believed that each of my teachers was my mother in disguise.</tp-text>
                 <mj-divider />
+                <mj-text>Oh, to be a center fielder, a center fielder and nothing more.</mj-text>
                 <tp-text>Oh, to be a center fielder, a center fielder and nothing more.</tp-text>
-            </mj-column>
-        </mj-section>
-        <mj-section>
-            <mj-column>
-                <tp-button width="100%" href="https://thumbtack.com">Button</tp-button>
-            </mj-column>
-            <mj-column>
-                <tp-button width="100%" href="https://thumbtack.com">Button</tp-button>
+                <mj-button>mj Button</mj-button>
+                <tp-button>tp Button</tp-button>
+                {{#each people}}
+                    <tp-text>{{this}}</tp-text>
+                {{/each}}
             </mj-column>
         </mj-section>
     </mj-body>
   </mjml>
 `);
 
-const html = template({ name: 'Tom' });
+const html = template({ people: ['Tom', 'Dan'] });
 const htmlOutput = mjml2html(html);
 
 if (htmlOutput.errors[0] !== undefined) {
