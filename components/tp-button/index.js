@@ -9,7 +9,7 @@ registerDependencies({
 });
 
 const themeMap = {
-  secondary: { background: 'red' },
+  secondary: { background: 'white', border: '2px solid gray', color: 'black' },
 };
 
 export default class TpButton extends BodyComponent {
@@ -34,7 +34,17 @@ export default class TpButton extends BodyComponent {
             background-color="${
               this.getAttribute('theme')
                 ? themeMap[this.getAttribute('theme')].background
+                : tokens.tpColorBlue
+            }"
+            border="${
+              this.getAttribute('theme')
+                ? themeMap[this.getAttribute('theme')].border
                 : undefined
+            }"
+            color="${
+              this.getAttribute('theme')
+                ? themeMap[this.getAttribute('theme')].color
+                : '#ffffff'
             }"
         >
             ${this.getContent()}

@@ -30,6 +30,7 @@ const template = Handlebars.compile(`
             <mj-button
                 font-family="Mark, Arial, sans-serif"
                 padding="8px 16px"
+                inner-padding="16px 24px"
                 background-color="${tokens.tpColorBlue}"
                 font-size="16px"
                 color="#ffffff"
@@ -69,7 +70,7 @@ const template = Handlebars.compile(`
                 <mj-text>Oh, to be a center fielder, a center fielder and nothing more.</mj-text>
                 <tp-text>Oh, to be a center fielder, a center fielder and nothing more.</tp-text>
                 <mj-button href="https://google.com">tp Button</mj-button>
-                <tp-button href="https://google.com" theme="secondary" width="100%">tp Button Fix</tp-button>
+                <tp-button href="https://google.com" theme="secondary">Primary</tp-button>
             </mj-column>
         </mj-section>
     </mj-body>
