@@ -16,29 +16,26 @@ export default class TpButton extends BodyComponent {
   static endingTag = true;
 
   static allowedAttributes = {
-    'background-color': 'string',
     href: 'string',
     width: 'unit(px,%)',
-    'css-class': 'string',
-    theme: 'string',
+    theme: 'enum(secondary)',
   };
 
   static defaultAttributes = {
     padding: '8px 16px',
     'css-class': 'button-full-width-anchor-fix',
-    theme: 'primary',
   };
 
   render() {
     return this.renderMJML(`
         <mj-button
-              ${this.htmlAttributes({
-                href: this.getAttribute('href'),
-                width: this.getAttribute('width'),
-                'background-color': this.getAttribute('theme')
-                  ? themeMap[this.getAttribute('theme')].background
-                  : undefined,
-              })}
+            href="${this.getAttribute('href')}"
+            width="${this.getAttribute('width')}"
+            background-color="${
+              this.getAttribute('theme')
+                ? themeMap[this.getAttribute('theme')].background
+                : undefined
+            }"
         >
             ${this.getContent()}
         </mj-button>

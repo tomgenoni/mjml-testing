@@ -60,7 +60,7 @@ const template = Handlebars.compile(`
             }
         </mj-style>
     </mj-head>
-    <mj-body>
+    <mj-body background-color="#ffffff">
         <mj-section>
             <mj-column>
                 <tp-title>Hi {{name}}.</tp-title>
@@ -77,7 +77,7 @@ const template = Handlebars.compile(`
 `);
 
 const html = template({ name: 'Tom' });
-const htmlOutput = mjml2html(html);
+const htmlOutput = mjml2html(html, { minify: true });
 
 if (htmlOutput.errors[0] !== undefined) {
   console.log(htmlOutput.errors[0]);
