@@ -20,7 +20,7 @@ const template = Handlebars.compile(`
         <mj-attributes>
             <mj-divider padding="16px" border-width="1px" border-color="${tokens.tpColorGray300}" />
             <mj-text
-                font-family="Mark"
+                font-family="Mark, Arial, sans-serif"
                 padding="8px 16px"
                 font-size="16px"
                 color="${tokens.tpColorBlack300}"
@@ -28,11 +28,13 @@ const template = Handlebars.compile(`
                 align="left"
             />
             <mj-button
+                font-family="Mark, Arial, sans-serif"
                 padding="8px 16px"
                 background-color="${tokens.tpColorBlue}"
                 font-size="16px"
                 color="#ffffff"
                 align="left"
+                font-weight="700"
             />
             <mj-image padding="8px 16px" />
             <mj-section padding="8px 16px" />
@@ -53,10 +55,8 @@ const template = Handlebars.compile(`
                 src: url(https://fonts.thumbtack.com/mark/mark-tt-subset-bold.woff2) format('woff2'),
                 url(https://fonts.thumbtack.com/mark/mark-tt-subset-bold.woff) format('woff');
             }
-            body {
-                font-family: 'Mark, Arial';
-                font-size: 16px;
-                line-height: 1.6;
+            .button-full-width-anchor-fix a {
+                display: block !important;
             }
         </mj-style>
     </mj-head>
@@ -68,8 +68,8 @@ const template = Handlebars.compile(`
                 <mj-divider />
                 <mj-text>Oh, to be a center fielder, a center fielder and nothing more.</mj-text>
                 <tp-text>Oh, to be a center fielder, a center fielder and nothing more.</tp-text>
-                <mj-button>mj Button</mj-button>
-                <tp-button>tp Button</tp-button>
+                <mj-button href="https://google.com">tp Button</mj-button>
+                <tp-button href="https://google.com" theme="secondary" width="100%">tp Button Fix</tp-button>
             </mj-column>
         </mj-section>
     </mj-body>
